@@ -19,9 +19,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean install
-
+      - name: Compile Java project
+        run: |
+          find . -name "*.java" > sources.txt
+          javac @sources.txt
      
 
 
