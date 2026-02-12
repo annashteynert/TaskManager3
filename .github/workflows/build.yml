@@ -19,12 +19,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Compile Java project
+    - name: Compile Java project
         run: |
-          find . -name "*.java" > sources.txt
-          javac @sources.txt
-     
-
+          if find . -name "*.java" | grep -q .; then
+            find . -name "*.java" > sources.txt
+            javac @sources.txt
+          else
+            echo "No Java files found. Skipping compilation."
+          fi
 
 
 
